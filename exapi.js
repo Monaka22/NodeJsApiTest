@@ -41,6 +41,13 @@ app.get('/', function (req, res, next) {
   });
 });
 
+app.get('/product', function (req, res, next) {
+  con.query("SELECT * FROM stock", function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+  });
+});
+
 app.post('/api/add', function (req, res) {
   try {
     var form = new formidable.IncomingForm();
